@@ -1,0 +1,79 @@
+{% extends 'forum/base.html' %}
+
+{% block title %}
+    <title>Topics</title>
+{% endblock %}
+
+{% block content %}
+<!-- Threads  -->
+
+<div class="container">
+<div class="panel panel-info">
+                  <div class="panel-heading">
+    <h3>{{ topic.title }}</h3>
+                      </div>
+    <div class="panel-body">
+    <h5>
+    <p>
+        {{ topic.description }}
+    </p>
+        </div>
+        </h5>
+</div>
+
+
+
+
+    {% for post in posts.object_list %}
+        <div class="container">
+           <div class="panel panel-warning">
+                  <div class="panel-heading">
+                     <strong  style="font-size: 14px"> {{ post.title }} </strong> &nbsp; <i  style="font-size: 10.5px">by {{ post.creator }}</i> <span style = " float:right "> {{ post.created }}</span>
+                  </div>
+                  <div class="panel-body">
+                       <p>
+                            {{ post.body }}
+                       </p>
+
+                  </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="container">
+    <a href="{%  url 'forum:reply' pk %}" class="btn btn-primary btn-md" role="button" id="new_topic" >Reply</a>
+    </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Next/Prev page links  -->
+{% if posts.object_list and posts.paginator.num_pages > 1 %}
+<div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href= "?page={{ posts.previous_page_number }}">previous &lt;&lt; </a>
+        {% endif %}
+
+        <span class="current">
+            &nbsp;Page {{ posts.number }} of {{ topics.paginator.num_pages }}
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}"> &gt;&gt; next</a>
+        {% endif %}
+    </span>
+</div>
+{% endif %}
+

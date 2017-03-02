@@ -1,0 +1,88 @@
+{% extends 'forum/base.html' %}
+
+{% block title %}
+    <title>Topics</title>
+{% endblock %}
+
+{% block content %}
+<!-- Threads  -->
+<div class="container">
+    <p>
+     <a href="{% url 'forum:new-topic' pk  %}" class="btn btn-success btn-md " role="button" id="new_topic">Start New Topic</a>
+    </p>
+</div>
+
+
+
+{#<div id="list">#}
+{#<table border="0" cellpadding="4" width="100%">#}
+{#    <div class="row">#}
+{#        <div >Topics</div>#}
+{#        <td>Replies</td>#}
+{#        <td>Last post</td>#}
+{#        <td></td>#}
+{#    </div>#}
+{##}
+{#    {% for topic in topics.object_list %}#}
+{#    <tr>#}
+{#        <td {% if forloop.last %}class="last"{% endif %}>#}
+{#        <div class="title"> <a href="{% url 'topic-detail' topic.pk %}">{{ topic.title }}</a>#}
+{#            </div></td>#}
+{#        <td {% if forloop.last %}class="last"{% endif %}>{{ topic.num_replies }}</td>#}
+{##}
+{#        <td {% if forloop.last %}class="last"{% endif %}>#}
+{#            {{ topic.last_post.short|linebreaksbr }}</td>#}
+{##}
+{#    +#}
+{#        <td {% if forloop.last %}class="last"{% endif %}>#}
+{#            <a class="button" href="{% url 'topic-detail' topic.pk %}">VIEW</a>#}
+{#        </td>#}
+{#    </tr>#}
+{##}
+{#    {% endfor %}#}
+{#</table>#}
+{#</div>#}
+
+{#<!-- Next/Prev page links  -->#}
+{#{% if topics.object_list and topics.paginator.num_pages > 1 %}#}
+{#<div class="pagination">#}
+{#    <span class="step-links">#}
+{#        {% if topics.has_previous %}#}
+{#            <a href= "?page={{ topics.previous_page_number }}">previous &lt;&lt; </a>#}
+{#        {% endif %}#}
+{##}
+{#        <span class="current">#}
+{#            &nbsp;Page {{ topics.number }} of {{ topics.paginator.num_pages }}#}
+{#        </span>#}
+{##}
+{#        {% if topics.has_next %}#}
+{#            <a href="?page={{ topics.next_page_number }}"> &gt;&gt; next</a>#}
+{#        {% endif %}#}
+{#    </span>#}
+{#</div>#}
+{#{% endif %}#}
+
+    {% for topic in topics %}
+        <div class="container">
+           <div class="panel panel-info">
+                  <div class="panel-heading">
+                     <h4> {{ topic.title }} </h4>
+                  </div>
+                  <div class="panel-body">
+                      <p>
+                          {{ topic.description }}
+                      </p>
+                       <p>
+                           <b> No of posts: </b>{{ topic.num_replies }}
+                       </p>
+                        <p>
+                            <b> Created by: </b>{{ topic.creator.full_name|linebreaksbr }}
+                            <a class=" btn btn-primary " href="{% url 'forum:topic-detail' topic.pk %}" style = " float:right " > VIEW </a>
+                        </p>
+                  </div>
+            </div>
+        </div>
+    {% endfor %}
+
+
+{% endblock %}

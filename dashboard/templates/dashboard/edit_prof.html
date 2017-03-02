@@ -1,0 +1,98 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+    <title>Edit Profile</title>
+{% endblock %}
+
+{% block content_heading %}
+    Edit Profile
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="content-box-large box-with-header" id="info">
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2">
+                            <b><label for="id_full_name">Full name:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                            <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+                            <input id="id_full_name" maxlength="250" style="width: 40%; display:inline-block; margin-bottom: 10px" class="form-control" value="{{ first_name }}" name="full_name" type="text" required readonly />
+                        </div>
+                    </div>
+
+{#                    <div class="row">#}
+{#                        <div class="col-xm-2 col-md-2 ">#}
+{#                            <b><label for="id_email">Email address:</label></b>#}
+{#                        </div>#}
+{#                        <div class="col-xm-1 col-md-1">#}
+{#                            <b>:</b>#}
+{#                        </div>#}
+{#                        <div class="col-xm-7 col-md-7">#}
+{#                            <input id="id_email" maxlength="255" style="width: 40%; display:inline-block; margin-bottom: 10px" class="form-control" value="{{ email }}" name="email" type="email" required readonly />#}
+{#                        </div>#}
+{#                    </div>#}
+
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2">
+                          <b><label for="id_branch">Branch:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                          <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+                            <input id="id_branch" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" value="{{ branch }}" maxlength="100" name="branch" type="text"  required readonly />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2">
+                          <b><label for="id_id_no">Id no:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                          <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+                            <input id="id_id_no" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" value="{{ id_no }}" maxlength="10" name="id_no" type="text" required readonly />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2">
+                          <b><label for="id_enr_no">Enrollment no:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                          <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+                            <input id="id_enr_no" maxlength="20" name="enr_no" class="form-control" type="text" style="width: 40%; display:inline-block; margin-bottom: 10px" value="{{ enr_no }}" required readonly />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2 ">
+                            <b><label for="id_cgpa">Cgpa:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                            <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+{#                            <input id="id_cgpa" maxlength="5" name="cgpa" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" type="number" value="{{ form.cgpa }}" required />#}
+                            <input class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" id="id_cgpa" maxlength="5" name="cgpa" type="text" required value="{{ cgpa }}"/>
+                        </div>
+                    </div>
+                        {#              <input class="btn btn-primary signup" type="submit" style="float: right" value="Save Changes">#}
+                        {% if msg %}
+                            <div class="row">
+                                <div class="col-xm-12 col-md-12 col-lg-12 col-sm-12">
+                                    <b><label for="id_cgpa" style="color: darkgreen">{{ msg }}</label></b>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <button class="btn btn-primary signup" type="submit" style="float: right">Save Changes</button>
+                    </div>
+            </form>
+{% endblock %}

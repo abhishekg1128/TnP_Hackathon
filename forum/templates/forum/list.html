@@ -1,0 +1,42 @@
+{% extends 'forum/base.html' %}
+
+{% block title %}
+    <title>Forums</title>
+{% endblock %}
+
+{% block content %}
+<!-- Forums  -->
+<div id="list" class="container-fluid">
+{#    <table border="0" cellpadding="4" width="100%">#}
+           <div class="well">
+               <div class="row">
+                <div class=""></div>
+                <td>Posts</td>
+                <td>Last post</td>
+                <td></td>
+                </div>
+           </div>
+
+        {% for forum in forums %}
+            <tr>
+                <td {% if forloop.last %}class="last"{% endif %}>
+                    <div class="title"> <a href="{% url 'forum-detail' forum.pk %}">{{ forum.title }}</a></div>
+                </td>
+                <td {% if forloop.last %}class="last"{% endif %}>{{ forum.num_posts }}</td>
+                <td {% if forloop.last %}class="last"{% endif %}>
+                    {{ forum.last_post.short|linebreaksbr }}</td>
+                <td {% if forloop.last %}class="last"{% endif %}>
+                    <a class="button" href="{% url 'forum-detail' forum.pk %}">VIEW</a>
+                </td>
+            </tr>
+        {% endfor %}
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

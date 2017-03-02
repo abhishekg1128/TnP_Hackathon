@@ -1,0 +1,57 @@
+{% extends 'admn/base.html' %}
+
+{% block title %}
+    <title>Edit Company</title>
+{% endblock %}
+
+{% block content_heading %}
+    Add Company
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="content-box-large box-with-header" id="info">
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2">
+                            <b><label for="id_news">News:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                            <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+                            <input id="id_news" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" maxlength="250"
+                                   name="news" type="text" placeholder="News" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2">
+                            <b><label for="id_link">Link:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                            <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+                            <input id="id_link" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" maxlength="250"
+                                   name="link" type="text" placeholder="Link" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2">
+                          <b><label for="id_post_date">Post date:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                          <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+                            <input id="id_post_date" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px"
+                                   name="post_date" type="date" placeholder="Post Date" required />
+                        </div>
+                    </div>
+
+                        <button class="btn btn-primary signup" type="submit" style="float: right">Save</button>
+                    </div>
+            </form>
+{% endblock %}

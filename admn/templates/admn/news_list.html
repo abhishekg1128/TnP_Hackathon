@@ -1,0 +1,78 @@
+{% extends 'admn/base.html' %}
+
+{% block title %}
+    <title>News</title>
+{% endblock %}
+
+{% block content %}
+<!-- Threads  -->
+
+<div class="container">
+<div class="panel panel-info"  style="margin-top: 10px;">
+    <div class="panel-heading" style="height: 60px;">
+        <h3 style="display: inline; height: 100px;">
+{#            <a href="{%  url 'admn:companies' %}">NEWS</a>#}
+            NEWS
+{#            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>#}
+        </h3>
+{#    </div>#}
+{#    <div class="panel-body">#}
+{#        <a href="{%  url 'admn:add_companies' %}" style="float: right;" class="btn btn-primary btn-md" role="button" id="new_topic" >Add Companies</a>#}
+{#        <div style="float: right;">#}
+{#            <form action="" method="get" enctype="multipart/form-data">#}
+{#                {% csrf_token %}#}
+{#                <input class="form-control" id="id_first_name" maxlength="50" name="query" type="text"#}
+{#                                               style="width: 200px; display: inline;" placeholder="Search"/>#}
+{#                <button class="btn btn-primary btn-md" type="submit" role="button" id="new_topic" >Submit</button>#}
+{#            </form>#}
+{#        </div>#}
+    </div>
+</div>
+
+
+
+
+    {% for news in all_news %}
+        <div class="container">
+           <div class="panel panel-warning" style="margin-bottom: 6px;">
+                  <div class="panel-body" style="font-size: 14px; padding: 10px;">
+                      <div style="width: 80%; display: inline-block;">
+                        <span style="font-size: 18px;">{{ news.news }}</span>
+                      </div>
+                      <span style="float: right"><a href="{% url 'admn:delete-news' news.id %}" class="btn btn-primary btn-md" role="button" id="new_topic" >DELETE</a></span>
+                  </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#<!-- Next/Prev page links  -->#}
+{#{% if posts.object_list and posts.paginator.num_pages > 1 %}#}
+{#<div class="pagination">#}
+{#    <span class="step-links">#}
+{#        {% if posts.has_previous %}#}
+{#            <a href= "?page={{ posts.previous_page_number }}">previous &lt;&lt; </a>#}
+{#        {% endif %}#}
+{##}
+{#        <span class="current">#}
+{#            &nbsp;Page {{ posts.number }} of {{ topics.paginator.num_pages }}#}
+{#        </span>#}
+{##}
+{#        {% if posts.has_next %}#}
+{#            <a href="?page={{ posts.next_page_number }}"> &gt;&gt; next</a>#}
+{#        {% endif %}#}
+{#    </span>#}
+{#</div>#}
+{#{% endif %}#}

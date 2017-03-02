@@ -1,0 +1,505 @@
+{% extends 'admn/base.html' %}
+
+{% block title %}
+    <title>Edit Application Form</title>
+{% endblock %}
+
+{% block content_heading %}
+    Edit Application Form
+{% endblock %}
+
+{% block content %}
+		  			<div class="content-box-large box-with-header" id="info">
+			  			<form name="app_form" method="post" action="" onsubmit="return validateAppForm()">
+                        {% csrf_token %}
+                <div class="row">
+                            <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">
+                                <label for="id_title">Title:</label>
+                            </div>
+                            <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">
+                                :
+                            </div>
+                            <div class="col-md-3" style="margin-bottom: 10px">
+                                    <select class="form-control" style="margin-bottom: 10px" id="id_title" name="title" required>
+{#                                        <option value="" selected="selected">Branch</option>#}
+                                        <option value="Mr."
+                                            {% if title == 'Mr.' %}
+                                                selected
+                                            {% endif %}
+                                        >Mr.</option>
+                                        <option value="Ms."
+                                            {% if title == 'Ms.' %}
+                                                selected
+                                            {% endif %}
+                                        >Ms.</option>
+                                        <option value="Mrs."
+                                            {% if title == 'Mrs.' %}
+                                                selected
+                                            {% endif %}
+                                        >Mrs.</option>
+                                    </select>
+                                </div>
+                        </div>
+                <div class="row">
+                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">
+                    First Name
+                  </div>
+                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">
+                    :
+                  </div>
+                  <div class="col-md-7" style="margin-bottom: 10px">
+                    <input type="text" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" name="f_name" value="{{ f_name }}" id="f_name">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">
+                    Middle Name
+                  </div>
+                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">
+                    :
+                  </div>
+                  <div class="col-md-7" style="margin-bottom: 10px">
+                    <input type="text" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" name="m_name" value="{{ m_name }}" id="m_name">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">
+                    Last Name
+                  </div>
+                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">
+                    :
+                  </div>
+                  <div class="col-md-7" style="margin-bottom: 10px">
+                    <input type="text" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" name="l_name" value="{{ l_name }}" id="l_name">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">
+                    Gender
+                  </div>
+                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">
+                    :
+                  </div>
+                  <div class="col-md-7" style="margin-bottom: 10px">
+                    <input type="radio" name="gender" value="male"> Male
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3" style="margin-bottom: 10px">
+                  </div>
+                  <div class="col-md-7" style="margin-bottom: 10px">
+                    <input type="radio" name="gender" value="female"> Female
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3" style="margin-bottom: 10px">
+                  </div>
+                  <div class="col-md-7" style="margin-bottom: 10px">
+                    <input type="radio" name="gender" value="others"> Others
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">
+                    Date of Birth
+                  </div>
+                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">
+                    :
+                  </div>
+                  <div class="col-md-7" style="margin-bottom: 10px">
+                    <input type="date" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" value="{{ dob }}" name="dob" id="dob">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">
+                    E-Mail
+                  </div>
+                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">
+                    :
+                  </div>
+                  <div class="col-md-7" style="margin-bottom: 10px">
+                    <input type="email" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" value="{{ email }}" name="email" id="email">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">
+                    Mobile Number
+                  </div>
+                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">
+                    :
+                  </div>
+                  <div class="col-md-7" style="margin-bottom: 10px">
+                    <input type="number" min="7000000000" max="9999999999" value="{{ mob_no }}" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" name="mob_no" id="mob_no">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">
+                    Address
+                  </div>
+                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">
+                    :
+                  </div>
+                  <div class="col-md-7" style="margin-bottom: 10px">
+                    <input type="text" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" name="address" value="{{ address }}" id="addr">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">
+                    City
+                  </div>
+                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">
+                    :
+                  </div>
+                  <div class="col-md-7" style="margin-bottom: 10px">
+                    <input type="text" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" value="{{ city }}" name="city" id="city">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">
+                    State
+                  </div>
+                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">
+                    :
+                  </div>
+                  <div class="col-md-7" style="margin-bottom: 10px">
+                    <input type="text" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" value="{{ state }}" name="state" id="state">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">
+                    Country
+                  </div>
+                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">
+                    :
+                  </div>
+                  <div class="col-md-7" style="margin-bottom: 10px">
+                    <input type="text" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" value="{{ country }}" name="country" id="country">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">
+                    Zip Code
+                  </div>
+                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">
+                    :
+                  </div>
+                  <div class="col-md-7" style="margin-bottom: 10px">
+                    <input type="number" min="100000" max="999999" value="{{ zip }}" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" name="zip" id="zip_code">
+                  </div>
+                </div>
+                {% if msg %}
+                     <div class="row">
+                          <div class="col-xm-12 col-md-12 col-lg-12 col-sm-12">
+                              <b><label for="id_cgpa" style="color: darkgreen">{{ msg }}</label></b>
+                          </div>
+                     </div>
+                {% endif %}
+                  <input class="btn btn-primary signup" type="submit" style="float: right" value="Apply/Update Changes">
+                        </form>
+					</div>
+{% endblock %}
+
+
+
+
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#  <head>#}
+{#    <title>Student Dashboard</title>#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <!-- Bootstrap -->#}
+{#    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">#}
+{#    <!-- styles -->#}
+{#    <link href="css/styles.css" rel="stylesheet">#}
+{##}
+{#    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->#}
+{#    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->#}
+{#    <!--[if lt IE 9]>#}
+{#      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>#}
+{#      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>#}
+{#    <![endif]-->#}
+{#  </head>#}
+{#  <body>#}
+{#    <nav class="navbar navbar-inverse">#}
+{#      <div class="container-fluid">#}
+{#        <div class="navbar-header">#}
+{#          <a class="navbar-brand" href="#" style="padding: 0px; margin-left: 20px;"><img src="images/logo.png" style="padding: 0px; height: 45px; margin-top: 2px;"/></a>#}
+{#          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">#}
+{#                <span class="icon-bar"></span>#}
+{#                <span class="icon-bar"></span>#}
+{#                <span class="icon-bar"></span>#}
+{#          </button>#}
+{#        </div>#}
+{##}
+{#        <div class="collapse navbar-collapse" id="myNavbar">#}
+{#          <ul class="nav navbar-nav navbar-right" style="margin-right: 0;">#}
+{#            <li><a href="home.html">Home</a></li>#}
+{#            <li><a href="for_students.html">For Students</a></li>#}
+{#            <li><a href="for_companies.html">For Companies</a></li>#}
+{#            <li><a href="home.html">Logout</a></li>#}
+{#          </ul>#}
+{#        </div>#}
+{#      </div>#}
+{#    </nav>#}
+{##}
+{#    <div class="page-content">#}
+{#    	<div class="row">#}
+{#		  <div class="col-md-2">#}
+{#		  	<div class="sidebar content-box" style="display: block;">#}
+{#                <ul class="nav">#}
+{#                    <!-- Main menu -->#}
+{#                    <li class="current"><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>#}
+{#                    <li>#}
+{#                         <a>#}
+{#                            <i></i> Companies#}
+{#                         </a>#}
+{#                         <!-- Sub menu -->#}
+{#                       </li>#}
+{#                         <!ul style="display: block;">#}
+{#                            <li class="submenu">#}
+{#                              <a href="#">#}
+{#                                <i class="glyphicon glyphicon-list"></i> Management#}
+{#                                <span class="caret pull-right"></span>#}
+{#                              </a>#}
+{#                              <ul>#}
+{#                                <li>#}
+{#                                  <a href="temp.html"> Goldman Sachs</a>#}
+{#                                </li>#}
+{#                              </ul>#}
+{#                            </li>#}
+{#                            <li class="submenu">#}
+{#                              <a href="#">#}
+{#                                <i class="glyphicon glyphicon-list"></i> IT#}
+{#                                <span class="caret pull-right"></span>#}
+{#                              </a>#}
+{#                              <ul>#}
+{#                                <li>#}
+{#                                  <a href="temp.html"> Infosys</a></li>#}
+{#                              </ul>#}
+{#                            </li>#}
+{#                            <li class="submenu">#}
+{#                              <a href="#">#}
+{#                                <i class="glyphicon glyphicon-list"></i> Core#}
+{#                                <span class="caret pull-right"></span>#}
+{#                              </a>#}
+{#                              <ul>#}
+{#                                <li><a href="temp.html"> Google</a></li>#}
+{#                              </ul>#}
+{#                            </li>#}
+{#                    </li>#}
+{#                </ul>#}
+{#             </div>#}
+{#		  </div>#}
+{#		  <div class="col-md-10">#}
+{#		  	<div class="row">#}
+{#		  		<div class="col-md-12 panel-warning">#}
+{#		  			<div class="content-box-header panel-heading">#}
+{#	  					<div class="panel-title " id="title">Application Form</div>#}
+{##}
+{#						<div class="panel-options">#}
+{#							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i></a>#}
+{#              <ul class="dropdown-menu animated fadeInUp" style="position: relative">#}
+{#                <li><a href="edit_prof.html">Edit Profile</a></li>#}
+{#                <li><a href="current_app.html">Current Applications</a></li>#}
+{#                <li><a href="change_pw.html">Change Password</a></li>#}
+{#              </ul>#}
+{#						</div>#}
+{#		  			</div>#}
+{#		  			<div class="content-box-large box-with-header" id="info">#}
+{#			  			<form name="app_form" method="get" action="index.html" onsubmit="return validateAppForm()">#}
+{#                <div class="row">#}
+{#                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    Title#}
+{#                  </div>#}
+{#                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    :#}
+{#                  </div>#}
+{#                  <div class="col-md-6" style="margin-bottom: 10px">#}
+{#                    <input type="radio" name="title" value="mr"> Mr.#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                  <div class="col-md-3" style="margin-bottom: 10px">#}
+{#                  </div>#}
+{#                  <div class="col-md-6" style="margin-bottom: 10px">#}
+{#                    <input type="radio" name="title" value="ms"> Ms.#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                  <div class="col-md-3" style="margin-bottom: 10px">#}
+{#                  </div>#}
+{#                  <div class="col-md-6" style="margin-bottom: 10px">#}
+{#                    <input type="radio" name="title" value="mrs"> Mrs.#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    First Name#}
+{#                  </div>#}
+{#                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    :#}
+{#                  </div>#}
+{#                  <div class="col-md-7" style="margin-bottom: 10px">#}
+{#                    <input type="text" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" name="f_name" id="f_name">#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    Middle Name#}
+{#                  </div>#}
+{#                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    :#}
+{#                  </div>#}
+{#                  <div class="col-md-7" style="margin-bottom: 10px">#}
+{#                    <input type="text" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" name="m_name" id="m_name">#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    Last Name#}
+{#                  </div>#}
+{#                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    :#}
+{#                  </div>#}
+{#                  <div class="col-md-7" style="margin-bottom: 10px">#}
+{#                    <input type="text" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" name="l_name" id="l_name">#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    Gender#}
+{#                  </div>#}
+{#                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    :#}
+{#                  </div>#}
+{#                  <div class="col-md-7" style="margin-bottom: 10px">#}
+{#                    <input type="radio" name="gender" value="male"> Male#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                  <div class="col-md-3" style="margin-bottom: 10px">#}
+{#                  </div>#}
+{#                  <div class="col-md-7" style="margin-bottom: 10px">#}
+{#                    <input type="radio" name="gender" value="female"> Female#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                  <div class="col-md-3" style="margin-bottom: 10px">#}
+{#                  </div>#}
+{#                  <div class="col-md-7" style="margin-bottom: 10px">#}
+{#                    <input type="radio" name="gender" value="others"> Others#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    Date of Birth#}
+{#                  </div>#}
+{#                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    :#}
+{#                  </div>#}
+{#                  <div class="col-md-7" style="margin-bottom: 10px">#}
+{#                    <input type="date" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" name="dob" id="dob">#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    E-Mail#}
+{#                  </div>#}
+{#                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    :#}
+{#                  </div>#}
+{#                  <div class="col-md-7" style="margin-bottom: 10px">#}
+{#                    <input type="email" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" name="email" id="email">#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    Mobile Number#}
+{#                  </div>#}
+{#                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    :#}
+{#                  </div>#}
+{#                  <div class="col-md-7" style="margin-bottom: 10px">#}
+{#                    <input type="number" min="7000000000" max="9999999999" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" name="mob_no" id="mob_no">#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    Address#}
+{#                  </div>#}
+{#                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    :#}
+{#                  </div>#}
+{#                  <div class="col-md-7" style="margin-bottom: 10px">#}
+{#                    <input type="text" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" name="address" id="addr">#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    City#}
+{#                  </div>#}
+{#                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    :#}
+{#                  </div>#}
+{#                  <div class="col-md-7" style="margin-bottom: 10px">#}
+{#                    <input type="text" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" name="city" id="city">#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    State#}
+{#                  </div>#}
+{#                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    :#}
+{#                  </div>#}
+{#                  <div class="col-md-7" style="margin-bottom: 10px">#}
+{#                    <input type="text" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" name="state" id="state">#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    Country#}
+{#                  </div>#}
+{#                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    :#}
+{#                  </div>#}
+{#                  <div class="col-md-7" style="margin-bottom: 10px">#}
+{#                    <input type="text" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" name="country" id="country">#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                  <div class="col-md-2" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    Zip Code#}
+{#                  </div>#}
+{#                  <div class="col-md-1" style="margin-bottom: 10px; font-weight: bold">#}
+{#                    :#}
+{#                  </div>#}
+{#                  <div class="col-md-7" style="margin-bottom: 10px">#}
+{#                    <input type="number" min="100000" max="999999" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" name="zip" id="zip_code">#}
+{#                  </div>#}
+{#                </div>#}
+{#                  <input class="btn btn-primary signup" type="submit" style="float: right" value="Apply/Update Changes">#}
+{##}
+{#					</div>#}
+{#		  		</div>#}
+{#		  	</div>#}
+{#		  </div>#}
+{#		</div>#}
+{#    </div>#}
+{##}
+{#    <footer>#}
+{#         <div class="container">#}
+{##}
+{#            <div class="copy text-center">#}
+{#               Copyright 2017 <a href='#'>Website</a>#}
+{#            </div>#}
+{##}
+{#         </div>#}
+{#      </footer>#}
+{##}
+{#    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->#}
+{#    <script src="https://code.jquery.com/jquery.js"></script>#}
+{#    <!-- Include all compiled plugins (below), or include individual files as needed -->#}
+{#    <script src="bootstrap/js/bootstrap.min.js"></script>#}
+{#    <script src="js/custom.js"></script>#}
+{#  </body>#}
+{#</html>#}

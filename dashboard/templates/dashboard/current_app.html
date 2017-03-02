@@ -1,0 +1,78 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+    <title>Current Applications</title>
+{% endblock %}
+
+<center>
+{% block content_heading %}
+    Current Applications
+{% endblock %}
+</center>
+
+<!--
+
+
+ <div id="list">
+<table border="0" cellpadding="4" width="100%">
+    <tr>
+        <td>COMPANIES</td>
+        <td>Replies</td>
+        <td>Last post</td>
+        <td></td>
+    </tr>
+
+    {  app  apps.object_list %}
+    <tr>
+        <td >
+            <div class="title">
+                { apps.company.company_name }}
+            </div>
+        </td>
+        <td >
+
+        </td>
+
+        <td >
+            { apps.last_post.short|linebreaksbr }}
+        </td>
+
+    </tr>
+
+
+    { endfor %}
+</table>
+</div>
+-->
+{% block content %}
+{#{% if apps %}#}
+{#    <ul>#}
+{#        {% for app in apps %}#}
+{#            <li>{{ app.title }}</li>#}
+{#             <li>{{ app.f_name }}</li>#}
+{#            <li>{{ app.gender}}</li>#}
+{#            <li>{{ app.email }}</li>#}
+{#            <li>{{ app.address }}</li>#}
+{#            <li>{{ app.company }}</li>#}
+{#            <li>{{ app.user }}</li>#}
+{#            <br/>#}
+{#        {% endfor %}#}
+{##}
+{#    </ul>#}
+{# {% else %}#}
+{#    <h3>You don't have any applications</h3>#}
+{#  {% endif %}#}
+
+{% for app in apps %}
+        <div class="container">
+           <div class="panel panel-info">
+                  <div class="panel-heading">
+                     <span style="font-size: 22px;"> {{ app.company }} </span>
+                      <span style="margin-right: 10px; float: right;"><a class=" btn btn-primary " href="{% url 'dashboard:edit_appl' app.id %}" style = "margin-right: 10px; float:right " > Edit </a></span>
+                      <span style="margin-right: 10px;float: right;"><a class=" btn btn-primary " href="{% url 'dashboard:view_appl' app.id %}" style = "margin-right: 10px; float:right " > View </a></span>
+                  </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

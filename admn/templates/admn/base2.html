@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      {% block title %}
+      {% endblock %}
+      {% load staticfiles %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="{% static 'dashboard/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- styles -->
+    <link href="{% static 'dashboard/css/styles.css' %}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body class="login-bg">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{% url 'home:home' %}" style="padding: 0px; margin-left: 20px;"><img src="{% static 'home/images/logo.png' %}" style="padding: 0px; height: 45px; margin-top: 2px;"/></a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right" style="margin-right: 0;">
+{#            <li><a href="{% url 'dashboard:dashboard' %}">Dashboard</a></li>#}
+{#            <li><a href="http://127.0.0.1:8000/forum/2">Forum</a></li>#}
+{#            <li><a href="{% url 'home:for_students' %}">For Students</a></li>#}
+{#            <li><a href="{% url 'home:for_companies' %}">For Companies</a></li>#}
+              {% if request.user.is_authenticated %}
+                  <li><a href="{% url 'dashboard:logout' %}">Logout</a></li>
+              {% else %}
+                  <li><a href="{% url 'dashboard:login' %}">Log In</a></li>
+              {% endif %}
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="page-content">
+    	<div class="row">
+
+{#		  {% block sidebar %}#}
+{#          {% endblock %}#}
+
+		  <div class="{% block cols %}{% endblock %}" id="student_detail">
+		  	<div class="row" style="margin: 0;">
+		  		<div class="col-md-12 panel-warning">
+
+                    {% if not WP %}
+{#		  			<div class="content-box-header panel-heading">#}
+{#                                  {% if request.user.is_authenticated %}#}
+{##}
+{#	  					<div class="panel-title " id="title" >#}
+{#                                {% block content_heading %}#}
+{#                                {% endblock %}#}
+{#                        </div>#}
+{#                        {% if not SP %}#}
+{##}
+{#						<div class="panel-options">#}
+{#							  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i></a>#}
+{#                              <ul class="dropdown-menu animated fadeInUp" style="position: relative">#}
+{#                                <li><a href="{% url 'dashboard:edit_profile' %}">Edit Profile</a></li>#}
+{#                                <li><a href="{% url 'dashboard:current_app' %}">Current Applications</a></li>#}
+{#                                <li><a href="{% url 'dashboard:change_password_form' %}">Change Password</a></li>#}
+{#                              </ul>#}
+{#						</div>#}
+{#                        {% endif %}#}
+{#                        {% endif %}#}
+{#		  			</div>#}
+                    {% endif %}
+
+                {% block content %}
+                {% endblock %}
+
+		  		</div>
+
+		  	</div>
+		  </div>
+
+        <div class="col-md-10" id="company_detail" style="display: none;">
+        <h3 style="text-align: center">Instructions</h3>
+        <p class="page-content" style="overflow:hidden; font-size: 15px;">
+                Arrive at the examination venue at least 15 minutes before the start of the examination / 35 minutes before a digital examination.
+    Law: The examination starts at the moment the book control begins, and you must therefore be present by 8.20 a.m. for regular written examinations and 8.10 a.m. at digital examinations.
+    When using a laptop at digital examinations, the laptop has to be set up as soon as possible. If you are taking a law exam, the laptop must be set up before the book control.
+    Coats, backpacks, bags, etc. must be placed as directed. Mobile phones, mp3 players, smartwatches and other electronic devices must be turned off and put away, and cannot be stored in coats or pockets.
+    If support material, other than that which is specifically permitted, is found at or by the desk, it may be treated as an attempt to cheat and relevant procedures for cheating will be followed.
+    The head invigilator will provide information about examination support materials that you are permitted to use during the examination. All dictionaries must be approved by the faculty before the exam and will be handed out in the exam venue by the invigilators.
+
+    Humanities– Dictionaries must be approved by the faculty at the latest three days before the exam. If you are to bring your own examination support materials directly to the exam venue, the department will provide information about this in advance.
+    Law– Only examination materials approved by the faculty are permitted. Book control takes place in the exam venue before the start of the examination.
+    Psychology - Dictionaries must be approved by the faculty Information Centre at the latest one week before the exam. If you don’t have a suitable dictionary, you may apply to loan one from the faculty, given that there are dictionaries available in your language. Please click here for application form.
+    Sciences – Information about permitted examination support materials will be written on the examination paper.
+    Social Science – Dictionaries must be approved by the faculty Information Centre at the latest one week before the exam. If you are to bring your own examination support materials directly to the examination venue, the department will provide information about this in advance. </p>
+        <br>
+        <h4 style="font-weight: bold" id="eligibility">Eligibilty : {{ company.req_cgpa }}</h4><br>
+        <h4 style="font-weight: bold" id="salary">Offered Salary : {{ company.salary }}</h4><br>
+        <h4 style="font-weight: bold" id="stipend">Offered Stipend(For Internship) : {{ company.stipend }}</h4><br>
+        <h4 style="font-weight: bold" id="last_date">LAST DATE OF REGISTRATION : {{ company.last_date }}</h4><br>
+        <h4 style="font-weight: bold" id="branches">Branches Eligible : {{ company.branch }}</h4><br>
+
+            <a href="" class="btn btn-primary" id="apply_btn">Apply</a>
+            <a href="" class="btn btn-primary disabled">Apply</a>
+
+    <br><br>
+    </div>
+		</div>
+    </div>
+
+    {% load staticfiles %}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'home/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/custom.js' %}"></script>
+    <script src="{% static 'dashboard/js/ajax.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+    <title>Sign Up</title>
+{% endblock %}
+
+{% block content %}
+	<div class="page-content container">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="login-wrapper">
+			        <div class="box">
+			            <div class="content-wrap">
+			                <h6>Sign Up</h6>
+                            <div style="color: red">{{ error_message }}</div><br><br>
+                      <form name="sign_up_form" method="post" action="" onsubmit="" enctype="multipart/form-data">
+                          {% csrf_token %}
+{#                          {% for field in form %}#}
+                                <label for="id_full_name" style="display: none;">First name:</label>
+                                    <input class="form-control" id="id_first_name" maxlength="50" name="first_name" type="text" required
+                                           style="margin-bottom: 10px" placeholder="First Name"/>
+                                <label for="id_full_name" style="display: none;">Last name:</label>
+                                    <input class="form-control" id="id_last_name" maxlength="50" name="last_name" type="text" required
+                                           style="margin-bottom: 10px" placeholder="Last Name"/>
+                                <label for="id_branch" style="display: none;">Branch name:</label>
+                                    <select class="form-control" style="margin-bottom: 10px" id="id_branch" name="branch" required>
+                                        <option value="" selected="selected">Branch</option>
+                                        <option value="CSE">Computer Science &amp; Engineering</option>
+                                        <option value="ARCH">Architecture</option>
+                                        <option value="MECH">Mechanical Engineering</option>
+                                        <option value="CIV">Civil Engineering</option>
+                                        <option value="CHEM">Chemical Engineering</option>
+                                        <option value="META">Metallurgy</option>
+                                        <option value="MIN">Mining</option>
+                                    </select>
+                                <label for="id_email" style="display: none;">Email address:</label>
+                                    <input class="form-control" id="id_email" maxlength="255" name="email" type="email" required
+                                           style="margin-bottom: 10px" placeholder="E-Mail Address"/>
+                                <label for="id_id_no" style="display: none;">Id no:</label>
+                                    <input class="form-control" id="id_id_no" maxlength="10" name="id_no" type="number" required
+                                           style="margin-bottom: 10px" placeholder="ID Number"    />
+                                <label for="id_enr_no" style="display: none;">Enr no:</label>
+                                    <input class="form-control" id="id_enr_no" maxlength="20" name="enr_no" type="text" required
+                                           placeholder="Enrollment Number"/>
+                                <label for="id_cgpa" style="display: none;">Cgpa:</label>
+                                    <input class="form-control" id="id_cgpa" maxlength="5" name="cgpa" type="number" required
+                                           step="0.01" min="1" max="10" style="margin-bottom: 10px" placeholder="CGPA"/>
+                                <label for="id_password1" style="display: none;">Password:</label>
+                                    <input class="form-control" id="id_password1" name="password1" type="password" required
+                                           placeholder="Password"/>
+                                <label for="id_password2" style="display: none;">Password confirmation:</label>
+                                    <input class="form-control" id="id_password2" name="password2" type="password" required
+                                           placeholder="Confirm Password"/>
+                                <label for="id_resume" style="float: left;font-size: 16px;font-weight: 500">Upload Resume:</label>
+                                        <input id="id_resume" name="resume" type="file" required
+                                               style="margin-bottom: 10px" placeholder="Upload Resume"    />
+
+{#                              <div class="form-control">#}
+{#                                <label class="control-label col-sm-2">{{ field.label_tag }}</label>#}
+{#                                <div class="col-sm-10">{{ field }}</div>#}
+{#                              </div>#}
+
+{#                          {% endfor %}#}
+                          <button class="btn btn-primary signup" type="submit">Submit</button>
+                    </form>
+			            </div>
+			        </div>
+
+			        <div class="already">
+			            <p>Have an account already?</p>
+			            <a href="{% url 'dashboard:login' %}">Login</a>
+			        </div>
+			    </div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

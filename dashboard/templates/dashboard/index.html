@@ -1,0 +1,88 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+    <title>Dashboard</title>
+{% endblock %}
+
+{% block content_heading %}
+    Your Profile
+{% endblock %}
+
+{% block cols %}
+    col-md-10
+{% endblock %}
+
+{% block sidebar %}
+    <div class="col-md-2">
+		  	<div class="sidebar content-box" style="display: block;">
+                <ul class="nav">
+                    <!-- Main menu -->
+                    <li class="current"><a href="{% url 'dashboard:dashboard' %}"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+                    <li>
+                         <a>
+                            <i></i> Companies
+                         </a>
+                         <!-- Sub menu -->
+                       </li>
+                         <!ul style="display: block;">
+                            <li class="submenu">
+                              <a href="#">
+                                <i class="glyphicon glyphicon-list"></i> Management
+                                <span class="caret pull-right"></span>
+                              </a>
+                              <ul>
+                                  {% for company in management_companies %}
+                                <li>
+                                    <a style="cursor: pointer;" onclick="loadDoc({{ company.id }})">{{ company.company_name }}</a>
+                                </li>
+                                  {% endfor %}
+                              </ul>
+                            </li>
+                            <li class="submenu">
+                              <a href="#">
+                                <i class="glyphicon glyphicon-list"></i> IT
+                                <span class="caret pull-right"></span>
+                              </a>
+                              <ul>
+                                {% for company in it_companies %}
+                                    {% if not company.is_past_due %}
+                                        <li>
+                                            <a style="cursor: pointer;" onclick="loadDoc({{ company.id }})">{{ company.company_name }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                              </ul>
+                            </li>
+                            <li class="submenu">
+                              <a href="#">
+                                <i class="glyphicon glyphicon-list"></i> Core
+                                <span class="caret pull-right"></span>
+                              </a>
+                              <ul>
+                                {% for company in core_companies %}
+                                <li>
+                                    <a style="cursor: pointer;" onclick="loadDoc({{ company.id }})">{{ company.company_name }}</a>
+                                </li>
+                                {% endfor %}
+                              </ul>
+                            </li>
+                    </li>
+                </ul>
+             </div>
+		  </div>
+{% endblock %}
+
+{% block content %}
+    <div class="content-box-large box-with-header" id="info">
+        <p><b>Name: {{ first_name }}</b></p>
+        <br>
+        <p><b>Branch: {{ branch }}</b></p>
+        <br>
+        <p><b>Enrollment Number: {{ enr_no }}</b></p>
+        <br>
+        <p><b>ID Number:  {{ id_no }}</b></p>
+        <br>
+        <p><b>CGPA: {{ cgpa }}</b></p>
+        <br>
+    </div>
+{% endblock %}

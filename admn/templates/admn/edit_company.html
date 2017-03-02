@@ -1,0 +1,141 @@
+{% extends 'admn/base.html' %}
+
+{% block title %}
+    <title>Edit Company</title>
+{% endblock %}
+
+{% block content_heading %}
+    Add Company
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="content-box-large box-with-header" id="info">
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2">
+                            <b><label for="id_company_name">Company name:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                            <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+                            <input id="id_company_name" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" maxlength="250"
+                                   name="company_name" type="text" value="{{ company.company_name }}" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2">
+                          <b><label for="id_company_type">Company type:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                          <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+                            <select class="form-control" style="margin-bottom: 10px; width: 40%;" id="id_branch" name="company_type" required>
+                                        <option value="IT"
+                                            {% if company.company_type == 'IT' %}
+                                                selected
+                                            {% endif %}
+                                            >IT</option>
+                                        <option value="Core"
+                                            {% if company.company_type == 'Core' %}
+                                                selected
+                                            {% endif %}
+                                            >Core</option>
+                                        <option value="Management"
+                                            {% if company.company_type == 'Management' %}
+                                                selected
+                                            {% endif %}
+                                            >Management</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2">
+                          <b><label for="id_req_cgpa">Req cgpa:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                          <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+                            <input id="id_req_cgpa" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px"
+                                   name="req_cgpa" step="any" type="number" value="{{ company.req_cgpa }}" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2">
+                          <b><label for="id_last_date">Last date:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                          <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+                            <input id="id_last_date" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px"
+                                   name="last_date" type="date" value="{{ company.last_date }}" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2 ">
+                            <b><label for="id_salary">Salary:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                            <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+{#                            <input id="id_cgpa" maxlength="5" name="cgpa" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" type="number" value="{{ form.cgpa }}" required />#}
+                            <input id="id_salary" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px"
+                                   name="salary" type="number" value="{{ company.salary }}" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2 ">
+                            <b><label for="id_salary">Stipend:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                            <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+{#                            <input id="id_cgpa" maxlength="5" name="cgpa" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" type="number" value="{{ form.cgpa }}" required />#}
+                            <input id="id_stipend" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px"
+                                   name="stipend" type="number" value="{{ company.stipend }}" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2 ">
+                            <b><label for="id_salary">Branch</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                            <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+{#                            <input id="id_cgpa" maxlength="5" name="cgpa" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" type="number" value="{{ form.cgpa }}" required />#}
+                            <input type="checkbox" name="branch" value="CSE" {% if 'CSE' in company.branch %}checked{% endif %}> Computer Science & Engineering <br>
+                            <input type="checkbox" name="branch" value="MECH" {% if 'MECH' in company.branch %}checked{% endif %}> Mechanical Engineering <br>
+                            <input type="checkbox" name="branch" value="CHEM" {% if 'CHEM' in company.branch %}checked{% endif %}> Chemical Engineering <br>
+                            <input type="checkbox" name="branch" value="CIV" {% if 'CIV' in company.branch %}checked{% endif %}> Civil Engineering <br>
+                            <input type="checkbox" name="branch" value="META" {% if 'META' in company.branch %}checked{% endif %}> Metallurgy <br>
+                            <input type="checkbox" name="branch" value="MIN" {% if 'MIN' in company.branch %}checked{% endif %}> Mining <br>
+                            <input type="checkbox" name="branch" value="ARCH" {% if 'ARCH' in company.branch %}checked{% endif %}> Architecture <br>
+                            <input type="checkbox" name="branch" value="EEE" {% if 'EEE' in company.branch %}checked{% endif %}> Electrical and Electronics Engineering <br>
+                            <input type="checkbox" name="branch" value="ECE" {% if 'ECE' in company.branch %}checked{% endif %}> Electronics and Communication Engineering <br>
+                        </div>
+                    </div>
+                        {#              <input class="btn btn-primary signup" type="submit" style="float: right" value="Save Changes">#}
+                        {% if msg %}
+                            <div class="row">
+                                <div class="col-xm-12 col-md-12 col-lg-12 col-sm-12">
+                                    <b><label for="id_cgpa" style="color: darkgreen">{{ msg }}</label></b>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <button class="btn btn-primary signup" type="submit" style="float: right">Save</button>
+                    </div>
+            </form>
+{% endblock %}

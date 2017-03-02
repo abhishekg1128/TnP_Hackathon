@@ -1,0 +1,60 @@
+{% extends 'admn/base.html' %}
+
+{% block title %}
+    <title>Current Applications</title>
+{% endblock %}
+
+<center>
+{% block content_heading %}
+    Current Applications
+{% endblock %}
+</center>
+{% block content %}
+    <div class="container">
+<div class="panel panel-info"  style="margin-top: 10px;">
+    <div class="panel-heading" style="height: 60px;">
+        <h3 style="display: inline; height: 100px;">
+            <a href="{%  url 'admn:applications' %}">Applications</a>
+        </h3>
+        <div style="float: right;">
+            <form action="" method="get" enctype="multipart/form-data">
+                <input class="form-control" id="id_search" maxlength="50" name="query" type="text"
+                                               style="width: 200px; display: inline;" placeholder="Search"/>
+                <button class="btn btn-primary btn-md" type="submit" role="button" id="submit" >Submit</button>
+            </form>
+        </div>
+        </div>
+    </div>
+    </div>
+{#{% if apps %}#}
+{#    <ul>#}
+{#        {% for app in apps %}#}
+{#            <li>{{ app.title }}</li>#}
+{#             <li>{{ app.f_name }}</li>#}
+{#            <li>{{ app.gender}}</li>#}
+{#            <li>{{ app.email }}</li>#}
+{#            <li>{{ app.address }}</li>#}
+{#            <li>{{ app.company }}</li>#}
+{#            <li>{{ app.user }}</li>#}
+{#            <br/>#}
+{#        {% endfor %}#}
+{##}
+{#    </ul>#}
+{# {% else %}#}
+{#    <h3>You don't have any applications</h3>#}
+{#  {% endif %}#}
+{% if application %}
+{% for app in application %}
+        <div class="container">
+           <div class="panel panel-info">
+                  <div class="panel-body">
+                     <span style="font-size: 20px;"> {{ app.company }} - by {{ app.user }}</span>
+                     <span style="float:right"><a class=" btn btn-primary" href="{% url 'dashboard:view_appl' app.id %}" style = " float:right " > View </a></span>
+                  </div>
+           </div>
+        </div>
+    {% endfor %}
+    {% else %}
+    <h1>No applications</h1>
+    {% endif %}
+{% endblock %}

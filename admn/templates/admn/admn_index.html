@@ -1,0 +1,143 @@
+{% extends 'admn/base.html' %}
+
+{% block title %}
+    <title>Users</title>
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-2">
+		  	<div class="sidebar content-box" style="display: block; margin-top: 40px">
+                <ul class="nav">
+                    <!-- Main menu -->
+{#                    <li class="current"><a href="{% url 'dashboard:dashboard' %}"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>#}
+                    <li>
+                         <a href="{% url 'admn:users' %}">
+                            <i></i> Users
+                         </a>
+                         <!-- Sub menu -->
+                    </li>
+                    <li>
+                         <a href="{% url 'admn:companies' %}">
+                            <i></i> Companies
+                         </a>
+                         <!-- Sub menu -->
+                    </li>
+                    <li>
+                         <a href="{% url 'admn:applications' %}">
+                            <i></i> Applications
+                         </a>
+                         <!-- Sub menu -->
+                    </li>
+                    <li>
+                         <a href="{% url 'admn:applications' %}">
+                            <i></i> News
+                         </a>
+                         <!-- Sub menu -->
+                    </li>
+{#                         <!ul style="display: block;">#}
+{#                            <li class="submenu">#}
+{#                              <a href="#">#}
+{#                                <i class="glyphicon glyphicon-list"></i> Users#}
+{#                                <span class="caret pull-right"></span>#}
+{#                              </a>#}
+{#                            </li>#}
+{#                            <li class="submenu">#}
+{#                              <a href="#">#}
+{#                                <i class="glyphicon glyphicon-list"></i> Companies#}
+{#                                <span class="caret pull-right"></span>#}
+{#                              </a>#}
+{#                            </li>#}
+{#                            <li class="submenu">#}
+{#                              <a href="#">#}
+{#                                <i class="glyphicon glyphicon-list"></i> Applications#}
+{#                                <span class="caret pull-right"></span>#}
+{#                              </a>#}
+{#                    </li>#}
+                </ul>
+             </div>
+		  </div>
+
+    <div class="users" style="float: left;">
+        <div class="panel panel-info"  style="margin-top: 10px;">
+    <div class="panel-heading" style="height: 60px;">
+        <h3 style="display: inline; height: 100px;">
+            Users Section
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <ul style="list-style: none">
+                <li>
+                    <span style="font-size: 20px"><span style="color: black">-></span> <a href="{% url 'admn:pending' %}" style="text-decoration: none;">Pending Approval Requests</a></span>
+                </li>
+                <li>
+                    <span style="font-size: 20px"><span style="color: black">-></span> <a href="{% url 'admn:users' %}" style="text-decoration: none;">Existing Users</a></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="apps" style="margin-left:17%;width: 80%; float: left;">
+        <div class="panel panel-info"  style="margin-top: 10px;">
+    <div class="panel-heading" style="height: 60px;">
+        <h3 style="display: inline; height: 100px;">
+            Applications Section
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <ul style="list-style: none">
+                <li>
+                    <span style="font-size: 20px"><span style="color: black">-></span> <a href="{% url 'admn:applications' %}" style="text-decoration: none;">View Applications</a></span>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="comp" style="margin-left:17%;width: 80%; float: left;">
+        <div class="panel panel-info"  style="margin-top: 10px;">
+    <div class="panel-heading" style="height: 60px;">
+        <h3 style="display: inline; height: 100px;">
+            Companies Section
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <ul style="list-style: none">
+                <li>
+                    <span style="font-size: 20px"><span style="color: black">-></span> <a href="{% url 'admn:companies' %}" style="text-decoration: none;">Companies</a></span></li>
+                    <li>
+                        <span style="font-size: 20px"><span style="color: black">-></span> <a href="{% url 'admn:add_companies' %}" style="text-decoration: none;">Add Company</a></span>
+                    </li>
+
+            </ul>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="comp" style="margin-left:17%;width: 80%; float: left;">
+        <div class="panel panel-info"  style="margin-top: 10px;">
+    <div class="panel-heading" style="height: 60px;">
+        <h3 style="display: inline; height: 100px;">
+            News Section
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <ul style="list-style: none">
+                <li>
+                    <span style="font-size: 20px"><span style="color: black">-></span> <a href="{% url 'admn:news-list' %}" style="text-decoration: none;">News</a></span>
+                    <br>
+                    <span style="font-size: 20px"><span style="color: black">-></span> <a href="{% url 'admn:news-add' %}" style="text-decoration: none;">Add News</a></span>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

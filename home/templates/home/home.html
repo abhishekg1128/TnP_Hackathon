@@ -1,0 +1,457 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#  <head>#}
+{#    <meta charset="utf-8">#}
+{#    <meta http-equiv="X-UA-Compatible" content="IE=edge">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->#}
+{#    <title>HOME.html</title>#}
+{#    {% load staticfiles %}#}
+{#    <!-- Favicon -->#}
+{#    <link rel="icon" href="{% static 'home/images/favicon.png' %}" type="image/x-icon">#}
+{##}
+{#    <!-- Bootstrap -->#}
+{#    <link href="{% static 'home/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">#}
+{##}
+{#    <!-- Custom Fonts#}
+{#    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">#}
+{#    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">#}
+{#    -->#}
+{##}
+{#    <style>#}
+{#  /*  @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,700); */#}
+{##}
+{#    #fonty {#}
+{#    	background: #f5f5f5 /*#fff */;#}
+{#    	margin:0;#}
+{#    	padding:0;#}
+{#    	font-family: 'Source Sans Pro', 'sans-serif';#}
+{#    	font-size: 1.1em;#}
+{#    	color: #666;#}
+{#    	font-weight: 300;#}
+{#    }#}
+{##}
+{#    .container1 {#}
+{#      padding-right: 4%;#}
+{#      padding-left: 4%;#}
+{##}
+{#      margin-right: auto;#}
+{#      margin-left: auto;#}
+{#    /*  width:auto;#}
+{#      margin: 0px auto; */#}
+{#    }#}
+{#    .well1 {#}
+{#      min-height: 20px;#}
+{#      padding-left: 15px;#}
+{#      padding-right: 15px;#}
+{#      padding-bottom: 15px;#}
+{#      margin-bottom: 20px;#}
+{#      background-color:  #f5f5f5; /* #d9edf7; */#}
+{#      border: 1px solid #e3e3e3;#}
+{#      border-radius: 10px;#}
+{##}
+{#    }#}
+{#    table{ /*no use */#}
+{#      width:100%;#}
+{#      border-radius: 10px;#}
+{#      }#}
+{##}
+{#    .logo{#}
+{#      width:9%;height:100px;background: #003;float:left;#}
+{#    }#}
+{#    .back{#}
+{#      float:left;#}
+{#      width: 82%;#}
+{#    	height: 100px;#}
+{#      background: #003 url("{% static 'home/images/bg.jpg' %}") no-repeat ;#}
+{##}
+{#    }#}
+{##}
+{#      header h1 a,header h1 a:hover {#}
+{#        color: #990;#}
+{#        font-size: 1.3em;#}
+{#        padding-top:0;#}
+{#        letter-spacing:0;#}
+{#        /*border-bottom:none ; */#}
+{#        display: block;#}
+{#        text-align: center;#}
+{##}
+{#    }#}
+{#      header h1 a b{#}
+{#        font-weight:normal;#}
+{#        color: #759;#}
+{##}
+{#      }#}
+{##}
+{#    header h1 a strong {#}
+{#    	font-weight:normal;#}
+{#    	color: #2A5BBB;#}
+{#    }#}
+{#    .vnit{#}
+{#      color:white;#}
+{#      text-align: center;#}
+{#      font-size: 12px;#}
+{#      letter-spacing: 4px;#}
+{#      font-weight: bolder;#}
+{#      padding-top:0;#}
+{#      }#}
+{##}
+{#      /* Customize the nav-justified links to be fill the entire space of the .navbar */#}
+{##}
+{#      .nav-justified, .nav-justified > .dropdown .dropdown-menu {#}
+{#        background-color: #eee;#}
+{#        border: 1px solid #ccc;#}
+{#        border-radius: 5px;#}
+{#      }#}
+{#      .nav-justified > li > a, .nav-justified > .dropdown .dropdown-menu > li > a {#}
+{#        padding-top: 8px;#}
+{#        padding-bottom: 8px;#}
+{#        margin-bottom: 0;#}
+{#        font-weight: bold;#}
+{#        color: #777;#}
+{#        text-align: center;#}
+{#        background-color: #e5e5e5; /* Old browsers */#}
+{#        background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#e5e5e5));#}
+{#        background-image: -webkit-linear-gradient(top, #f5f5f5 0%, #e5e5e5 100%);#}
+{#        background-image:      -o-linear-gradient(top, #f5f5f5 0%, #e5e5e5 100%);#}
+{#        background-image:         linear-gradient(to bottom, #f5f5f5 0%,#e5e5e5 100%);#}
+{#        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */#}
+{#        background-repeat: repeat-x; /* Repeat the gradient */#}
+{#        border-bottom: 1px solid #d5d5d5;#}
+{#      }#}
+{#      .nav-justified > .active > a,#}
+{#      .nav-justified > .active > a:hover,#}
+{#      .nav-justified > .active > a:focus {#}
+{#        background-color: #ddd;#}
+{#        /*background-image: none;*/#}
+{#        -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.15);#}
+{#                box-shadow: inset 0 3px 7px rgba(0,0,0,.15);#}
+{#      }#}
+{#      .nav-justified > li:first-child > a {#}
+{#        border-radius: 5px 5px 0 0;#}
+{#      }#}
+{#      .nav-justified > li:last-child > a {#}
+{#        border-bottom: 0;#}
+{#        border-radius: 0 0 5px 5px;#}
+{#      }#}
+{##}
+{#      @media (min-width: 768px) {#}
+{#        .nav-justified {#}
+{#          max-height: 52px;#}
+{#        }#}
+{#        .nav-justified > li > a {#}
+{#          border-right: 1px solid #d5d5d5;#}
+{#          border-left: 1px solid #fff;#}
+{#        }#}
+{##}
+{#      }#}
+{##}
+{#      marquee {#}
+{#        background: #fff;#}
+{#        font-family:inherit;#}
+{#        font-size: 1.3em;#}
+{#        color: #666;#}
+{#        font-weight: 300;#}
+{#      }#}
+{#      #news a{#}
+{#        color:#767e86;#}
+{#      }#}
+{#    </style>#}
+{#  </head>#}
+{#  <body>#}
+{#  <!--  <link rel="stylesheet" href="css/font-awesome.css"> and this doesnt work -->#}
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css"> <!-- for those fa fa things -->#}
+{#    <div class="container1">#}
+{#    <div class=" well1 ">#}
+{#        <table class="fonty">#}
+{##}
+{#          <tr>#}
+{#            <header>#}
+{#            <div class="logo"><img src="{% static 'home/images/logo.png' %}" width="100%" height="100px"></div>#}
+{#            <div class="back">#}
+{#              <h1><a>Training <b>&</b><strong> Placement</strong></a></h1>#}
+{#              <div class="vnit">Visvesvaraya National Institute of Technology, Nagpur-442201</div>#}
+{#            </div>#}
+{#            <div class="logo"><img src="{% static 'home/images/vis.jpg' %}" width="100%" height="100px"></div>#}
+{#          </header>#}
+{#          </tr>#}
+{#          <tr>#}
+{#            <td>#}
+{#              <ul class="nav nav-justified">#}
+{#                  <li class="active"><a href="home.html">Home</a></li>#}
+{#                  <li><a href="for_students.html">For Students</a></li>#}
+{#                  <li><a href="for_companies.html">For Companies</a></li>#}
+{#                  <li><a href="about_us.html">About Us</a></li>#}
+{#                  <li><a href="contact_us.html">Contact Us</a></li>#}
+{#                  <li class="dropdown">#}
+{#                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-off"></span> Login  <span class="caret"></span></a>#}
+{#                    <ul class="dropdown-menu">#}
+{#                      <li><a href="{% url 'dashboard:login' %}">Student</a></li>#}
+{#                      <li><a href="{% url 'admin:index' %}">Admin</a></li>#}
+{#                    </ul>#}
+{#                  </li>#}
+{#              </ul>#}
+{#            </td>#}
+{#          </tr>#}
+{#        </table>#}
+{##}
+{#        <marquee class="fonty" style="padding:2px">#}
+{#            {% for news in all_sensitive_news %}#}
+{#                <span class="label label-danger">NEWS</span>#}
+{#                <code>{{ news.news }}</code> &nbsp;#}
+{#            {% endfor %}#}
+{#        </marquee>#}
+{#        <div class="row">#}
+{#            <div class="col-lg-9">#}
+{#              <!-- Carousel#}
+{#              ================================================== -->#}
+{#              <div id="myCarousel" class="carousel slide" data-ride="carousel">#}
+{#                <!-- Indicators -->#}
+{#                <ol class="carousel-indicators">#}
+{#                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>#}
+{#                  <li data-target="#myCarousel" data-slide-to="1"></li>#}
+{#                  <li data-target="#myCarousel" data-slide-to="2"></li>#}
+{#                </ol>#}
+{#                <div class="carousel-inner" role="listbox">#}
+{#                  <div class="item active" style='#}
+{#                          background: url("{% static 'home/images/admtve_block.jpg' %}") center center no-repeat;#}
+{#                          background-size: cover;#}
+{#                          height:30.25vw;#}
+{#                          '>#}
+{#                  <!--  <img  src="vnit/admtve block.jpg" alt="First slide" > -->#}
+{#                    <div class="container">#}
+{#                      <div class="carousel-caption">#}
+{#                        <h1></h1>#}
+{#                        <p></p>#}
+{#                        <p></p>#}
+{#                      </div>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                  <div class="item" style='#}
+{#                          background: url("{% static 'home/images/statue_copy.jpg' %}") center center no-repeat;#}
+{#                          background-size: cover;#}
+{#                          height:30.25vw;#}
+{#                          '>#}
+{#                  <!--  <img  src="vnit/statue copy.jpg" alt="Second slide"> -->#}
+{#                    <div class="container">#}
+{#                      <div class="carousel-caption">#}
+{##}
+{##}
+{#                      </div>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                  <div class="item" style='#}
+{#                           background: url("{% static 'home/images/mig2.jpg' %}") center center no-repeat;#}
+{#                           background-size: cover;#}
+{#                           height:30.25vw;#}
+{#                           '>#}
+{#                <!--    <img src="images/mig2.jpg" alt="Third slide"> -->#}
+{#                    <div class="container">#}
+{#                      <div class="carousel-caption">#}
+{##}
+{#                      </div>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                </div>#}
+{#                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">#}
+{#                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>#}
+{#                  <span class="sr-only">Previous</span>#}
+{#                </a>#}
+{#                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">#}
+{#                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>#}
+{#                  <span class="sr-only">Next</span>#}
+{#                </a>#}
+{#              </div>#}
+{#              <!-- /.carousel -->#}
+{##}
+{#            </div>#}
+{#            <div class="col-lg-3">#}
+{#              <div id="news" style="max-height:430px;overflow-y:auto; margin-left: 15px;">#}
+{#                  <h2 style="padding-bottom:10px;"><i class="fa fa-list-alt"></i> &nbsp;Recent News</h2>#}
+{#                  {% for news in all_recent_news %}#}
+{#                    <p><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;#}
+{#                    <a href="{{ news.link }}" target="_blank" class="newslinks">{{ news.news }}</a>#}
+{#                    </p>#}
+{#                  {% endfor %}#}
+{#              </div>#}
+{##}
+{##}
+{#            </div>#}
+{#          </div>#}
+{#    </div>#}
+{##}
+{#</div>#}
+{#                {% load staticfiles %}#}
+{#                  <script src="{% static 'home/bootstrap/js/jquery.js' %}"></script>#}
+{#                  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->#}
+{#                  <!-- useful only when netconnection==1 -->#}
+{#                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>#}
+{#                  <!-- Include all compiled plugins (below), or include individual files as needed -->#}
+{#                  <script src="{% static 'home/bootstrap/js/bootstrap.min.js' %}"></script>#}
+{#   </body>#}
+{#</html>#}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Home</title>
+    {% load staticfiles %}
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'home/images/favicon.png' %}" type="image/x-icon">
+    <!-- Bootstrap -->
+    <link href="{% static 'home/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'home/css/styles.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    -->
+      <style>
+          .back{
+            width: 100%;
+            height: 150px;
+            top: 0;
+          background: url("{% static 'home/images/bg.jpg' %}") no-repeat;
+
+    }
+      </style>
+  </head>
+
+    <body>
+    <div class="container-fluid">
+        <header>
+            <div class="back">
+              <h1>Training <b>&</b> <strong>Placement</strong></h1>
+              <div class="vnit">Visvesvaraya National Institute of Technology, Nagpur-442201</div>
+            </div>
+        </header>
+
+        <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{% url 'home:home' %}" style="padding: 0px; margin-left: 20px;"><img src="{% static 'home/images/logo.png' %}" style="padding: 0px; height: 45px; margin-top: 2px;"/></a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right" style="margin-right: 0;">
+            <li><a href="">About Us</a></li>
+            <li><a href="http://127.0.0.1:8000/forum/2">Forum</a></li>
+              {#<li><a href="{% url 'forum:forum-detail' %}/2">Forum</a></li>#}
+            <li><a href="{% url 'home:for_students' %}">For Students</a></li>
+            <li><a href="{% url 'home:for_companies' %}">For Companies</a></li>
+              <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-off"></span> Login  <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="{% url 'dashboard:login' %}">Student</a></li>
+                      <li><a href="{% url 'admn:admnlogin' %}">Admin</a></li>
+                    </ul>
+              </li>
+
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    {% if all_sensitive_news %}
+    <marquee class="fonty" style="padding:2px">
+            {% for news in all_sensitive_news %}
+                <span class="label label-danger">NEWS</span>
+                <code>{{ news.news }}</code> &nbsp;
+            {% endfor %}
+    </marquee>
+    {% endif %}
+    <div class="row">
+            <div class="col-lg-9">
+              <!-- Carousel
+              ================================================== -->
+              <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active" style='
+                          background: url("{% static 'home/images/admtve_block.jpg' %}") center center no-repeat;
+                          background-size: cover;
+                          height:30.25vw;
+                          '>
+                  <!--  <img  src="vnit/admtve block.jpg" alt="First slide" > -->
+                    <div class="container">
+                      <div class="carousel-caption">
+                        <h1></h1>
+                        <p></p>
+                        <p></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item" style='
+                          background: url("{% static 'home/images/statue_copy.jpg' %}") center center no-repeat;
+                          background-size: cover;
+                          height:30.25vw;
+                          '>
+                  <!--  <img  src="vnit/statue copy.jpg" alt="Second slide"> -->
+                    <div class="container">
+                      <div class="carousel-caption">
+
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item" style='
+                           background: url("{% static 'home/images/mig2.jpg' %}") center center no-repeat;
+                           background-size: cover;
+                           height:30.25vw;
+                           '>
+                <!--    <img src="images/mig2.jpg" alt="Third slide"> -->
+                    <div class="container">
+                      <div class="carousel-caption">
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+              <!-- /.carousel -->
+
+            </div>
+            <div class="col-lg-3">
+              <div id="news" style="max-height:430px;overflow-y:auto; margin-left: 15px;">
+                  <h2 style="padding-bottom:10px;"><i class="fa fa-list-alt"></i> &nbsp;Recent News</h2>
+                  {% for news in all_recent_news %}
+                    <p style="font-size: 18px"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;
+                    <a href="{{ news.link }}" target="_blank" class="newslinks">{{ news.news }}</a>
+                    </p>
+                  {% endfor %}
+              </div>
+
+
+            </div>
+          </div>
+    </div>
+    </div>
+    {% load staticfiles %}
+                  <script src="{% static 'home/bootstrap/js/jquery.js' %}"></script>
+                  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+                  <!-- useful only when netconnection==1 -->
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                  <!-- Include all compiled plugins (below), or include individual files as needed -->
+                  <script src="{% static 'home/bootstrap/js/bootstrap.min.js' %}"></script>
+    </body>

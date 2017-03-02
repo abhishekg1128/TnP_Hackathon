@@ -1,0 +1,22 @@
+{% extends 'admn/base.html' %}
+
+{% block title %}
+    <title>Current Application</title>
+{% endblock %}
+
+{% block content %}
+    <div class="content-box-large box-with-header" id="info">
+        <p><b>First Name: {{ f_name }}</b></p>
+        <br>
+        <p><b>Last Name: {{ l_name }}</b></p>
+        <br>
+        <p><b>Gender : {{ gender }}</b></p>
+        <br>
+        <p><b>Address : {{ address }}</b></p>
+        <br>
+        <p><b>Email : {{ email }}</b></p>
+        <br>
+        <p><b>Mobile No. : {{ mob_no }}</b></p>
+        <br>
+    </div>
+{% endblock %}

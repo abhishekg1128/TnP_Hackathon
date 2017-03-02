@@ -1,0 +1,151 @@
+{% extends 'admn/base.html' %}
+
+{% block title %}
+    <title>User Info</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+<div class="panel panel-info"  style="margin-top: 10px;">
+    <div class="panel-heading" style="height: 60px;">
+        <h3 style="display: inline; height: 100px;">
+            User Application
+{#            <a href="{%  url 'admn:add_companies' %}" style="text-decoration: none;" class="glyphicon glyphicon-plus" aria-hidden="true"role="button" id="new_topic" ></a>#}
+{#            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>#}
+        </h3>
+{#    </div>#}
+{#    <div class="panel-body">#}
+{#        <a href="{%  url 'admn:add_companies' %}" style="float: right;" class="btn btn-primary btn-md" role="button" id="new_topic" >Add Companies</a>#}
+        <div style="float: right;">
+{#            <form action="" method="get" enctype="multipart/form-data">#}
+{#                {% csrf_token %}#}
+{#                <input class="form-control" id="id_first_name" maxlength="50" name="query" type="text"#}
+{#                                               style="width: 200px; display: inline;" placeholder="Search"/>#}
+{#                <button class="btn btn-primary btn-md" type="submit" role="button" id="new_topic" >Submit</button>#}
+{#            </form>#}
+        </div>
+    </div>
+</div>
+<form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="content-box-large box-with-header" id="info">
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2">
+                            <b><label for="id_full_name">First name:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                            <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+                            <input id="id_full_name" maxlength="250" style="width: 40%; display:inline-block; margin-bottom: 10px" class="form-control" value="{{ curr_user.first_name }}" name="f_name" type="text" required />
+                        </div>
+                    </div>
+
+                <div class="row">
+                        <div class="col-xm-2 col-md-2">
+                            <b><label for="id_full_name">Last name:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                            <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+                            <input id="id_full_name" maxlength="250" style="width: 40%; display:inline-block; margin-bottom: 10px" class="form-control" value="{{ curr_user.last_name }}" name="l_name" type="text" required />
+                        </div>
+                    </div>
+{#                    <div class="row">#}
+{#                        <div class="col-xm-2 col-md-2 ">#}
+{#                            <b><label for="id_email">Email address:</label></b>#}
+{#                        </div>#}
+{#                        <div class="col-xm-1 col-md-1">#}
+{#                            <b>:</b>#}
+{#                        </div>#}
+{#                        <div class="col-xm-7 col-md-7">#}
+{#                            <input id="id_email" maxlength="255" style="width: 40%; display:inline-block; margin-bottom: 10px" class="form-control" value="{{ email }}" name="email" type="email" required readonly />#}
+{#                        </div>#}
+{#                    </div>#}
+
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2">
+                          <b><label for="id_branch">Branch:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                          <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+                            <input id="id_branch" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" value="{{ curr_user.branch }}" maxlength="100" name="branch" type="text"  required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2">
+                          <b><label for="id_id_no">Id no:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                          <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+                            <input id="id_id_no" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" value="{{ curr_user.id_no }}" maxlength="10" name="id_no" type="text" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2">
+                          <b><label for="id_enr_no">Enrollment no:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                          <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+                            <input id="id_enr_no" maxlength="20" name="enr_no" class="form-control" type="text" style="width: 40%; display:inline-block; margin-bottom: 10px" value="{{ curr_user.enr_no }}" required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xm-2 col-md-2 ">
+                            <b><label for="id_cgpa">Cgpa:</label></b>
+                        </div>
+                        <div class="col-xm-1 col-md-1">
+                            <b>:</b>
+                        </div>
+                        <div class="col-xm-7 col-md-7">
+{#                            <input id="id_cgpa" maxlength="5" name="cgpa" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" type="number" value="{{ form.cgpa }}" required />#}
+                            <input class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" id="id_cgpa" maxlength="5" name="cgpa" type="text" required value="{{ curr_user.cgpa }}"/>
+                        </div>
+                    </div>
+                        {#              <input class="btn btn-primary signup" type="submit" style="float: right" value="Save Changes">#}
+                        {% if msg %}
+                            <div class="row">
+                                <div class="col-xm-12 col-md-12 col-lg-12 col-sm-12">
+                                    <b><label for="id_cgpa" style="color: darkgreen">{{ msg }}</label></b>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if curr_user.is_active == False %}
+                            <button class="btn btn-primary signup" type="submit">Save Changes and Accept</button>
+                            <span style="float: right"><a href="{% url 'admn:deleteuserf' curr_user.id%}" class="btn btn-primary btn-md" role="button" id="new_topic" >Reject</a></span>
+                        {% endif %}
+                        {% if curr_user.is_active == True %}
+                            <div class="row">
+                                <div class="col-xm-2 col-md-2 ">
+                                    <b><label for="id_cgpa">Activated:</label></b>
+                                </div>
+                                <div class="col-xm-1 col-md-1">
+                                    <b>:</b>
+                                </div>
+                                <div class="col-xm-5 col-md-5">
+        {#                            <input id="id_cgpa" maxlength="5" name="cgpa" class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" type="number" value="{{ form.cgpa }}" required />#}
+                                    <label for="act_yes">Yes</label>
+                                    <input class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" id="act_yes" maxlength="5" name="act" type="radio" value="True" checked="checked" />
+                                    <label for="act_yes">No</label>
+                                    <input class="form-control" style="width: 40%; display:inline-block; margin-bottom: 10px" id="act_no" maxlength="5" name="act" type="radio" value="False" />
+
+                                </div>
+                            </div>
+                        <button class="btn btn-primary signup" type="submit" style="float: right">Save Changes</button>
+                        {% endif %}
+                    </div>
+            </form>
+</div>
+
+{% endblock %}
